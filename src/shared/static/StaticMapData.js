@@ -68,6 +68,12 @@ const open_area = new FeatureLayer({
     },
     outFields: ["*"], // Ensure all fields are available
 });
+const treatment_plant = new FeatureLayer({
+    portalItem: {
+        id: "efe48b5dca5743bea4eebd2b35e93f5a", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
 
 const center = [-76.475188, 18.191876];
 const zoom = 18;
@@ -82,4 +88,5 @@ export {
     roads,
     open_area,
     NWC,
+    treatment_plant,
 };
