@@ -9,7 +9,7 @@ const Header = () => {
                     <img className="w-full h-full" src="./logo.png" alt="" />
                 </div>
                 <h1 className="text-white text-xl cursor-pointer hover:translate-x-0.5 hover:text-blue-300 trans">
-                    LAGUNA BAY
+                    NORWICH PORTLAND JAMAICA
                 </h1>
                 <div className=""></div>
             </div>
