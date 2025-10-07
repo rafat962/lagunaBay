@@ -119,9 +119,9 @@ const LeftNav = () => {
                         <Expand />
                     </li>
                 </Tooltip>
-                <div className="w-8 h-8">
+                {/* <div className="w-8 h-8">
                     <img className="w-full h-full" src="./logo.png" alt="" />
-                </div>
+                </div> */}
                 {/* Layers */}
                 {/* <NavItem name="Info" icon={<BiInfoCircle />} state={false} /> */}
                 {/* Basemap */}
