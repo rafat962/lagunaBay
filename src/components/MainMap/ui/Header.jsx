@@ -1,6 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useNavContext } from "../context/NavContext";
 
 const Header = () => {
+    let [searchParams] = useSearchParams();
+    const [project, setProject] = useState("NORWICH PORTLAND JAMAICA");
+    const { state } = useNavContext();
+    const { view } = state;
+    useEffect(() => {
+        const projectName = searchParams.get("project");
+        const extent = searchParams.get("extent");
+        if (projectName) {
+            setProject(projectName);
+        } else {
+            setProject("NORWICH PORTLAND JAMAICA");
+        }
+        if (extent) {
+            const extentArray = JSON.parse(extent);
+            console.log(extentArray); // [-50.475188, 18.191876]
+            console.log(typeof extentArray); // object
+            console.log(extentArray[0]);
+            if (view) {
+                console.log("view", view);
+                view.when(() => {
+                    view.goTo(
+                        {
+                            center: [31, 32],
+                            zoom: 18,
+                        },
+                        {
+                            duration: 2000,
+                            easing: "ease-in-out",
+                        }
+                    );
+                });
+            }
+        }
+    }, [searchParams, view]);
     return (
         <div className="w-full h-fit p-0 bg-slate-800 border-l-1 border-gray-600">
             {/* container */}
@@ -9,7 +45,7 @@ const Header = () => {
                     <img className="w-full h-full" src="./logo.png" alt="" />
                 </div>
                 <h1 className="text-white text-xl cursor-pointer hover:translate-x-0.5 hover:text-blue-300 trans">
-                    NORWICH PORTLAND JAMAICA
+                    {project}
                 </h1>
                 <div className=""></div>
             </div>
