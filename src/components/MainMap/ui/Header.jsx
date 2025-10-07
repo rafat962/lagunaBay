@@ -17,15 +17,12 @@ const Header = () => {
         }
         if (extent) {
             const extentArray = JSON.parse(extent);
-            console.log(extentArray); // [-50.475188, 18.191876]
-            console.log(typeof extentArray); // object
-            console.log(extentArray[0]);
             if (view) {
                 console.log("view", view);
                 view.when(() => {
                     view.goTo(
                         {
-                            center: [31, 32],
+                            center: extentArray,
                             zoom: 18,
                         },
                         {
