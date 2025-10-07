@@ -61,6 +61,25 @@ const roads = new FeatureLayer({
         id: "a4ddef94c886474392a20ed39569c796", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
+    labelingInfo: [
+        {
+            labelExpressionInfo: { expression: "$feature.name" }, // غيّر NAME للفيلد بتاعك
+            symbol: {
+                type: "text",
+                color: "black",
+                haloSize: 1,
+                haloColor: "white",
+                font: {
+                    size: 10,
+                    family: "Arial",
+                },
+            },
+            // أهم حاجة هنا 👇
+            labelPlacement: "always-horizontal",
+            deconflictionStrategy: "none", // ده يخليها تظهر كلها حتى لو متزاحمة
+        },
+    ],
+    labelsVisible: true,
 });
 const open_area = new FeatureLayer({
     portalItem: {
