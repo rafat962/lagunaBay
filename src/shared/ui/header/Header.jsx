@@ -26,7 +26,8 @@ const Header = () => {
                     <Search />
                 </div>
                 {/* right */}
-                <div className="flex">
+                <div></div>
+                {/* <div className="flex">
                     {darkMode && (
                         <Avatar
                             variant="rounded"
@@ -49,7 +50,7 @@ const Header = () => {
                             }}
                         ></Avatar>
                     )}
-                </div>
+                </div> */}
             </div>
         </div>
     );
