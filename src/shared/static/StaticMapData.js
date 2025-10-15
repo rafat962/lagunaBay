@@ -95,7 +95,7 @@ const treatment_plant = new FeatureLayer({
 });
 const cluster = new FeatureLayer({
     portalItem: {
-        id: "efe48b5dca5743bea4eebd2b35e93f5a", // Your portal item ID
+        id: "277af32391c640eaace2332396c93a02", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
@@ -114,5 +114,5 @@ export {
     open_area,
     NWC,
     treatment_plant,
-    
+    cluster,
 };
