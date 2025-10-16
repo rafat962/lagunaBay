@@ -99,6 +99,12 @@ const cluster = new FeatureLayer({
     },
     outFields: ["*"], // Ensure all fields are available
 });
+const sewer = new FeatureLayer({
+    portalItem: {
+        id: "624465e0928a45e0b9cf32bcc4a5fb95", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
 
 const center = [-76.475188, 18.191876];
 const zoom = 18;
@@ -115,4 +121,5 @@ export {
     NWC,
     treatment_plant,
     cluster,
+    sewer,
 };
