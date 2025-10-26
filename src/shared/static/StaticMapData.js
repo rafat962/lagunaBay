@@ -2,7 +2,7 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 
 const Parcels = new FeatureLayer({
     portalItem: {
-        id: "0e77a171e98c409a929e435b13269b2e", // Your portal item ID
+        id: "b6ba1c62635742bf86b9589fee86c9d5", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
     title: "Parcels",
@@ -26,82 +26,57 @@ const Parcels = new FeatureLayer({
     ],
     labelsVisible: true,
 });
-// const Parcels = new FeatureLayer({
-//     portalItem: {
-//         id: "08e5d450059d4bc8b223e187c500991e", // Your portal item ID
-//     },
-//     outFields: ["*"], // Ensure all fields are available
-// });
 const dry_gully = new FeatureLayer({
     portalItem: {
-        id: "1ad5c87bdf954de2a6fef701fb8eed6e", // Your portal item ID
+        id: "98056776cc414995b1b3b756141f8e69", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const NWC = new FeatureLayer({
     portalItem: {
-        id: "16d24dcfc5af4c12a056004a52e50e2b", // Your portal item ID
+        id: "a483d02b1bf54d2f8ab5417b38380d74", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const detention_pond = new FeatureLayer({
     portalItem: {
-        id: "43857943807e4b61a898df7f53e6c3e6", // Your portal item ID
+        id: "62d0d45469c64daea047e77401f18321", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const Future_Development = new FeatureLayer({
     portalItem: {
-        id: "dc04b442cbd844c1aa2d6d72cfd5339d", // Your portal item ID
+        id: "05eeb7b0ec734343850119d69d9cfa79", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const roads = new FeatureLayer({
     portalItem: {
-        id: "a4ddef94c886474392a20ed39569c796", // Your portal item ID
+        id: "d523a118f7964ed7bbdabc012fbcdfff", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
-    labelingInfo: [
-        {
-            labelExpressionInfo: { expression: "$feature.name" }, // غيّر NAME للفيلد بتاعك
-            symbol: {
-                type: "text",
-                color: "black",
-                haloSize: 1,
-                haloColor: "white",
-                font: {
-                    size: 10,
-                    family: "Arial",
-                },
-            },
-            // أهم حاجة هنا 👇
-            labelPlacement: "always-horizontal",
-            deconflictionStrategy: "none", // ده يخليها تظهر كلها حتى لو متزاحمة
-        },
-    ],
-    labelsVisible: true,
 });
 const open_area = new FeatureLayer({
     portalItem: {
-        id: "4dc5206e1dad4a9f9851b57da3cb5090", // Your portal item ID
+        id: "f0edf81c8fb848ecaa22bad009d14cba", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const treatment_plant = new FeatureLayer({
     portalItem: {
-        id: "efe48b5dca5743bea4eebd2b35e93f5a", // Your portal item ID
+        id: "4d2589c3a40b4f929c0ee6ee7485e3fb", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const cluster = new FeatureLayer({
     portalItem: {
-        id: "277af32391c640eaace2332396c93a02", // Your portal item ID
+        id: "56d0ba92817f462991bdf285d411a43d", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
 const sewer = new FeatureLayer({
     portalItem: {
-        id: "624465e0928a45e0b9cf32bcc4a5fb95", // Your portal item ID
+        id: "426109f3dbeb445186d09d3af066059e", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
