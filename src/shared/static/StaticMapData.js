@@ -26,6 +26,15 @@ const Parcels = new FeatureLayer({
     ],
     labelsVisible: true,
 });
+//https://services6.arcgis.com/fQifnPoW5pW1OhuM/ArcGIS/rest/services/Parcels_new/FeatureServer
+Parcels.load()
+    .then(function () {
+        console.log("URL:", Parcels.url); // الآن ستعمل
+        console.log("Fields:", Parcels.fields);
+    })
+    .catch(function (error) {
+        console.error("Error loading layer:", error);
+    });
 const dry_gully = new FeatureLayer({
     portalItem: {
         id: "98056776cc414995b1b3b756141f8e69", // Your portal item ID
