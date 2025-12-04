@@ -85,11 +85,11 @@ const AppLayout = () => {
                         <Outlet />
                     </Body>
                     {/* sidebar */}
-                    <SideContext>
+                    {/* <SideContext>
                         <Sidebar className=" dark:bg-slate-900 dark:text-white">
                             <SideBar />
                         </Sidebar>
-                    </SideContext>
+                    </SideContext> */}
                 </Main>
             )}
         </>

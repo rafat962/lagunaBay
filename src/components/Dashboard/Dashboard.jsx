@@ -1,31 +1,20 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { motion } from "framer-motion";
-import Taps from "./utils/Taps";
-import MapContainer from "./utils/MapContainer";
-import Charts3D from "./utils/thirdRow/Charts3D";
-
+import FormMap from "./utils/FormMap";
+import Map from "./utils/Map";
 const Dashboard = () => {
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="w-full h-fit  p-0.5 md:p-2"
-        >
-            <div className="flex flex-col items-start justify-start ">
-                {/* first Row Taps */}
-                <Taps />
-                {/* second Row Map */}
-                <div className="w-full h-fit py-2">
-                    <MapContainer />
+        <div className="w-full h-full  p-2">
+            {/* main container */}
+            <div className="flex items-center space-x-2 p-2 justify-center w-full h-full  bg-white rounded-xl shadow-2xl drop-shadow-2xl ring-1 ring-gray-200">
+                {/* map */}
+                <div className="overflow-hidden w-[75%] h-full rounded-l-2xl ring-2 ring-gray-200">
+                    <Map />
                 </div>
-                {/* third Row Charts */}
-                <div className=" w-full min-h-fit overflow-hidden">
-                    <Charts3D />
+                {/* form */}
+                <div className="w-[25%] h-full ring-2 ring-gray-200 shadow-2xl dr rounded-r-2xl">
+                    <FormMap />
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 

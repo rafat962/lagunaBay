@@ -12,6 +12,7 @@ import { useGetDarkmode } from "./shared/hooks/useGetDarkmode";
 import { useEffect, useMemo } from "react";
 import MangerMap from "./components/MainMap/MangerMap";
 import getToken from "./shared/helpers/GetToken";
+import { MapContext } from "./shared/Context/MapContext";
 const AppContainer = styled.div`
     box-sizing: border-box;
     padding: 0px;
@@ -27,6 +28,17 @@ const routs = createBrowserRouter([
     //     ),
     //     children: [{ path: "/dashboard", element: <Dashboard /> }],
     // },
+    {
+        path: "/backend",
+        element: (
+            <AppContainer>
+                <MapContext>
+                    <AppLayout />
+                </MapContext>
+            </AppContainer>
+        ),
+        children: [{ path: "/backend", element: <Dashboard /> }],
+    },
     {
         index: true,
         element: <Navigate to="/frontend" replace />,
