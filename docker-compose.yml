@@ -10,4 +10,47 @@ services:
             - "4000:80"
         restart: always
         volumes:
+            # التأكد من أن المسار هنا صحيح لاستبعاد node_modules من mount
             - /app/node_modules
+        # ربطها بالشبكة
+        networks:
+            - realestatemerchants.app
+
+    nginx:
+        image: nginx:latest # <--- تم إضافة صورة Nginx
+        volumes:
+            - webroot:/var/www/html
+            # تحتاج لملف إعداد Nginx مخصص هنا لنقل حركة المرور إلى react-app:4000
+            # مثال: - ./nginx-conf:/etc/nginx/conf.d
+        # تأكد من أن هذا يعتمد على react-app وليس "app"
+        depends_on:
+            - react-app
+        networks:
+            - realestatemerchants.app
+        # لغرض التطوير/الاختبار: فتح المنفذ 80 العام
+        ports:
+            - "80:80"
+
+    certbot:
+        image: certbot/certbot
+        container_name: certbot
+        volumes:
+            - certbot-etc:/etc/letsencrypt
+            - certbot-var:/var/lib/letsencrypt
+            - webroot:/var/www/html
+        depends_on:
+            - nginx
+        # أمر Certbot
+        command: certonly --webroot --webroot-path=/var/www/html --email rafatkamel96@gmail.com --agree-tos --no-eff-email --non-interactive --keep-until-expiring -d realestatemerchants.app
+
+# =======================================================
+# 💡 الأقسام المفقودة التي سببت الخطأ: تعريف الـ VOLUMES و NETWORKS
+# =======================================================
+volumes:
+    webroot: # لتخزين ملفات Nginx المؤقتة للـ ACME Challenge
+    certbot-etc: # لتخزين شهادات Let's Encrypt
+    certbot-var: # لتخزين بيانات عمل Certbot
+#
+networks:
+    realestatemerchants.app:
+        driver: bridge # شبكة افتراضية لربط جميع الحاويات (react-app, nginx, certbot)
