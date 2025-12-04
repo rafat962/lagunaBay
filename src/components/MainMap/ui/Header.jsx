@@ -24,7 +24,7 @@ const Header = () => {
                 view.when(() => {
                     view.goTo(
                         {
-                            center: [-50.475188, 20.191876],
+                            center: extentArray,
                             zoom: 18,
                         },
                         {

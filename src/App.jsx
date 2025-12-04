@@ -29,9 +29,9 @@ const routs = createBrowserRouter([
     // },
     {
         index: true,
-        element: <Navigate to="/MainMap/Frontend" replace />,
+        element: <Navigate to="/frontend" replace />,
     },
-    { path: "/MainMap/Frontend", element: <MangerMap /> },
+    { path: "/frontend", element: <MangerMap /> },
 ]);
 
 function App() {
