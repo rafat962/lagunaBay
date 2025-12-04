@@ -29,7 +29,7 @@ services:
             - realestatemerchants.app
         # لغرض التطوير/الاختبار: فتح المنفذ 80 العام
         ports:
-            - "80:80"
+            - "4000:80"
 
     certbot:
         image: certbot/certbot

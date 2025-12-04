@@ -18,20 +18,20 @@ const AppContainer = styled.div`
     margin: 0px;
 `;
 const routs = createBrowserRouter([
-    {
-        path: "/",
-        element: (
-            <AppContainer>
-                <AppLayout />
-            </AppContainer>
-        ),
-        children: [{ path: "/dashboard", element: <Dashboard /> }],
-    },
+    // {
+    //     path: "/",
+    //     element: (
+    //         <AppContainer>
+    //             <AppLayout />
+    //         </AppContainer>
+    //     ),
+    //     children: [{ path: "/dashboard", element: <Dashboard /> }],
+    // },
     {
         index: true,
-        element: <Navigate to="/MainMap" replace />,
+        element: <Navigate to="/MainMap/Frontend" replace />,
     },
-    { path: "/MainMap", element: <MangerMap /> },
+    { path: "/MainMap/Frontend", element: <MangerMap /> },
 ]);
 
 function App() {

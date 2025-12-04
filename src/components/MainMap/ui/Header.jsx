@@ -10,6 +10,7 @@ const Header = () => {
     useEffect(() => {
         const projectName = searchParams.get("project");
         const extent = searchParams.get("extent");
+        console.log(extent);
         if (projectName) {
             setProject(projectName);
         } else {
@@ -17,12 +18,13 @@ const Header = () => {
         }
         if (extent) {
             const extentArray = JSON.parse(extent);
+            console.log(extentArray);
             if (view) {
                 console.log("view", view);
                 view.when(() => {
                     view.goTo(
                         {
-                            center: extentArray,
+                            center: [-50.475188, 20.191876],
                             zoom: 18,
                         },
                         {
@@ -31,6 +33,7 @@ const Header = () => {
                         }
                     );
                 });
+                console.log(3);
             }
         }
     }, [searchParams, view]);
