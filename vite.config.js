@@ -19,4 +19,10 @@ export default defineConfig({
             clientPort: 443, // علشان الـ HMR يشتغل عبر HTTPS tunnel
         },
     },
+    preview: {
+        allowedHosts: [
+            "realestatemerchants.app",
+            "www.realestatemerchants.app",
+        ],
+    },
 });
