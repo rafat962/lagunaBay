@@ -1,8 +1,13 @@
-version: "3"
+version: "3.8"
+
 services:
     react-app:
-        build: .
-        container_name: react_app
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: realstate
         ports:
-            - "80:80"
-        restart: unless-stopped
+            - "4000:80"
+        restart: always
+        volumes:
+            - /app/node_modules

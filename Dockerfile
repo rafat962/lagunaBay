@@ -1,27 +1,23 @@
 # Stage 1: Build
-FROM node:18-alpine AS builder
+FROM node AS builder
 WORKDIR /app
 
-# انسخ package.json و package-lock.json فقط لتحسين cache
+# ننسخ بس package.json الأول عشان الـ cache
 COPY package*.json ./
-
-# نثبت الاعتماديات
 RUN npm install
 
-# انسخ باقي الملفات ونعمل build
+# ننسخ السورس ونعمل build
 COPY . .
 RUN npm run build
 
 # Stage 2: Run (Production)
 FROM nginx:alpine
 
-# انسخ ملفات الـ build من مرحلة البناء
-COPY --from=builder /app/build /usr/share/nginx/html
-
-# انسخ ملف الإعدادات الخاص بـ Nginx (لو عايز تخصيص)
+# ⬅️ إضافة هذا السطر: نسخ ملف الإعدادات المعدل
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-#Expose port
-EXPOSE 80
+# ننسخ بس الملفات الناتجة (dist) من مرحلة الـ build
+COPY --from=builder /app/dist /usr/share/nginx/html
 
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
