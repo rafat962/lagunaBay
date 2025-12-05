@@ -5,19 +5,16 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        # ❌ تمت إزالة نشر المنافذ (PORTS)
-        # Nginx سيتواصل معها داخليًا على المنفذ 80
+        # ❌ إزالة Volumes: ليس من الضروري ربط /app/node_modules في بيئة الإنتاج
         restart: always
-        volumes:
-            - /app/node_modules
         networks:
             - realestatemerchants.app
 
     nginx:
         image: nginx:latest
         volumes:
-            # 💡 ربط ملف إعداد Nginx المخصص
-            - ./nginx-conf:/etc/nginx/conf.d:ro
+            # ✅ ربط ملف إعداد Reverse Proxy المصحح (الذي أرسلته سابقاً)
+            - ./nginx-conf/app.conf:/etc/nginx/conf.d/default.conf:ro
             # ربط الـ volumes المطلوبة من Certbot
             - webroot:/var/www/html
             - certbot-etc:/etc/letsencrypt
@@ -25,10 +22,9 @@ services:
             - react-app
         networks:
             - realestatemerchants.app
-        # 💡 النشر على المنفذين 80 و 443 للسماح بالوصول من الإنترنت
         ports:
-            - "80:80" # HTTP (للوصول الأولي ولـ Certbot)
-            - "443:443" # HTTPS (بمجرد الحصول على الشهادة)
+            - "80:80" # HTTP
+            - "443:443" # HTTPS
 
     certbot:
         image: certbot/certbot
