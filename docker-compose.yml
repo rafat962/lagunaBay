@@ -1,51 +1,8 @@
-version: "3.8"
-
+version: "3"
 services:
     react-app:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        # ❌ إزالة Volumes: ليس من الضروري ربط /app/node_modules في بيئة الإنتاج
-        restart: always
-        networks:
-            - realestatemerchants.app
-
-    nginx:
-        image: nginx:latest
-        volumes:
-            # ✅ ربط ملف إعداد Reverse Proxy المصحح (الذي أرسلته سابقاً)
-            - ./nginx-conf/app.conf:/etc/nginx/conf.d/default.conf:ro
-            # ربط الـ volumes المطلوبة من Certbot
-            - webroot:/var/www/html
-            - certbot-etc:/etc/letsencrypt
-        depends_on:
-            - react-app
-        networks:
-            - realestatemerchants.app
+        build: .
+        container_name: react_app
         ports:
-            - "80:80" # HTTP
-            - "443:443" # HTTPS
-
-    certbot:
-        image: certbot/certbot
-        container_name: certbot
-        volumes:
-            - certbot-etc:/etc/letsencrypt
-            - certbot-var:/var/lib/letsencrypt
-            - webroot:/var/www/html
-        depends_on:
-            - nginx
-        # أمر Certbot
-        command: certonly --webroot -w /var/www/html -d realestatemerchants.app --email rafatkamel96@gmail.com --agree-tos --no-eff-email --non-interactive --force-renewal
-
-# =======================================================
-# تعريف الـ VOLUMES و NETWORKS
-# =======================================================
-volumes:
-    webroot:
-    certbot-etc:
-    certbot-var:
-
-networks:
-    realestatemerchants.app:
-        driver: bridge
+            - "80:80"
+        restart: unless-stopped

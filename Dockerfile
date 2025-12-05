@@ -1,20 +1,27 @@
-# Stage 1: Build (بناء التطبيق)
-FROM node:lts-alpine AS builder
+# Stage 1: Build
+FROM node:18-alpine AS builder
 WORKDIR /app
 
-# ننسخ بس package.json الأول عشان الـ cache
+# انسخ package.json و package-lock.json فقط لتحسين cache
 COPY package*.json ./
+
+# نثبت الاعتماديات
 RUN npm install
 
-# ننسخ السورس ونعمل build
+# انسخ باقي الملفات ونعمل build
 COPY . .
 RUN npm run build
 
-# Stage 2: Run (Production - خادم Nginx بسيط لخدمة الملفات الثابتة)
+# Stage 2: Run (Production)
 FROM nginx:alpine
 
-# 💡 تم حذف سطر COPY nginx.conf. سيتم استخدام إعداد Nginx الافتراضي لخدمة الملفات الثابتة.
-COPY --from=builder /app/dist /usr/share/nginx/html
+# انسخ ملفات الـ build من مرحلة البناء
+COPY --from=builder /app/build /usr/share/nginx/html
 
+# انسخ ملف الإعدادات الخاص بـ Nginx (لو عايز تخصيص)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+#Expose port
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
