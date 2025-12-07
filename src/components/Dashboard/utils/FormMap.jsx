@@ -72,25 +72,40 @@ const FormMap = () => {
     }
 
     useEffect(() => {
-        if (data) {
-            const sanitized = {
-                ...data,
-                SizeFT: data?.SizeFT ?? "",
-                Size: data?.Size ?? "",
-                Price_USD: data?.Price_USD ?? "",
-                Price_JMD: data?.Price_JMD ?? "",
-                Lot_Type: data?.Lot_Type ?? "",
-                Status: data?.Status ?? "",
-                Parcel_View: data?.Parcel_View ?? "",
-                Land_Terrain: data?.Land_Terrain ?? "",
-                HouseType: data?.HouseType?.split(",") ?? [],
-                images: [],
-            };
-            getAttachment(data?.OBJECTID);
-            reset(sanitized);
-            setPreviews([]);
-        }
+        if (!data) return;
+
+        const cleanValue = (v) => {
+            if (v === null || v === undefined || v === "<Null>") return "";
+            return v;
+        };
+
+        const sanitized = {
+            ...data,
+            SizeFT: cleanValue(data.SizeFT),
+            Size: cleanValue(data.Size),
+            Price_USD: cleanValue(data.Price_USD),
+            Price_JMD: cleanValue(data.Price_JMD),
+            Lot_Type: cleanValue(data.Lot_Type),
+            Status: cleanValue(data.Status),
+            Parcel_View: cleanValue(data.Parcel_View),
+            Land_Terrain: cleanValue(data.Land_Terrain),
+
+            // هنا لو null مش هيتحول لمصفوفة
+            HouseType:
+                data?.HouseType && data.HouseType !== "<Null>"
+                    ? data.HouseType.split(",").map((x) =>
+                          x.replace(/<[^>]*>?/gm, "").trim()
+                      )
+                    : [],
+
+            images: [],
+        };
+
+        getAttachment(data.OBJECTID);
+        reset(sanitized);
+        setPreviews([]);
     }, [data]);
+
     const { control, handleSubmit, reset } = useForm({
         defaultValues: {
             Formdata: 0,
@@ -110,7 +125,6 @@ const FormMap = () => {
     const [open, setOpen] = useState(false);
     const [previews, setPreviews] = useState([]);
     function onSuccess(Formdata) {
-        console.log(Formdata.HouseType);
         if (!data || Object.keys(data).length === 0) return;
         if (!Formdata) return;
         setOpen(true);
@@ -156,8 +170,10 @@ const FormMap = () => {
                 }
                 toast.success("parcels Update Successfully");
                 setOpen(false);
+                console.log("result", result);
             })
             .catch((err) => {
+                console.log("err", err);
                 toast.error("Please Try Again Later");
                 setOpen(false);
             });
