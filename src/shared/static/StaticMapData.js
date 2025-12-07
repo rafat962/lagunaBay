@@ -2,7 +2,7 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 
 const Parcels = new FeatureLayer({
     portalItem: {
-        id: "685f576ba173482887963ed76e09b3c6", // Your portal item ID
+        id: "e15334656bbf48329676f3f3bab4f40d", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
     title: "Parcels",

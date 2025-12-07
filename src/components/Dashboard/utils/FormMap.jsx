@@ -149,28 +149,41 @@ const FormMap = () => {
         })
             .then(async (result) => {
                 const objectId = result.updateFeatureResults[0].objectId;
+                console.log(3);
                 // attachment
                 if (Formdata.images && Formdata.images.length > 0) {
+                    console.log(4);
+
                     for (const file of Formdata.images) {
                         const formData = new FormData();
                         formData.append("attachment", file);
                         let finalUrl = `${Parcels.url}/0/${Formdata.OBJECTID}/addAttachment`;
+                        console.log(5);
+                        console.log(finalUrl);
+
                         await fetch(finalUrl, {
                             method: "POST",
                             body: formData,
-                        }).then((response) => {
-                            console.log(response);
-                            if (!response.ok) {
-                                throw new Error(
-                                    `Failed to upload attachment: ${response.statusText}`
-                                );
-                            }
-                        });
+                        })
+                            .then((response) => {
+                                console.log(6);
+
+                                console.log("res", response);
+                                if (!response.ok) {
+                                    throw new Error(
+                                        `Failed to upload attachment: ${response.statusText}`
+                                    );
+                                }
+                                setOpen(false);
+                            })
+                            .catch((err) => {
+                                console.log("err", err);
+                                setOpen(false);
+                            });
                     }
                 }
                 toast.success("parcels Update Successfully");
                 setOpen(false);
-                console.log("result", result);
             })
             .catch((err) => {
                 console.log("err", err);
