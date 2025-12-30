@@ -7,6 +7,7 @@ const initState = {
     legend: false,
     bookMark: false,
     addLayer: false,
+    DMap: false,
     view: "",
     viewRef: "",
     selectedLayer: "",
@@ -27,6 +28,14 @@ function reducer(state, action) {
             return {
                 ResetStet,
                 addLayer: !state.addLayer,
+                view: state.view,
+                viewRef: state.viewRef,
+                selectedLayer: state.selectedLayer,
+            };
+        case "DMap":
+            return {
+                ResetStet,
+                DMap: !state.DMap,
                 view: state.view,
                 viewRef: state.viewRef,
                 selectedLayer: state.selectedLayer,

@@ -22,9 +22,10 @@ import Expand from "../../../../shared/ui/header/utils/Expand";
 import RightNav from "../RightNav/RightNav";
 import AddLayersContent from "./utils/sideContent/AddLayersContent";
 import { useSearchParams } from "react-router-dom";
+import { HiSquare3Stack3D } from "react-icons/hi2";
 const LeftNav = () => {
     const { dispatch, state } = useNavContext();
-    const { layers, BaseMap, legend, bookMark, addLayer } = state;
+    const { layers, BaseMap, legend, bookMark, addLayer, DMap } = state;
     // ---- dialog
     const [open, setOpen] = React.useState(false);
     const [searchParams, SetSearchParams] = useSearchParams();
@@ -82,6 +83,12 @@ const LeftNav = () => {
                     state={legend}
                     content={<LegendContent />}
                     dispatch={dispatch}
+                />
+                {/* 3D */}
+                <NavItem
+                    name="DMap"
+                    icon={<HiSquare3Stack3D />}
+                    onClick={() => dispatch({ type: "DMap" })}
                 />
                 {/* BookMark */}
                 {/* <NavItem
