@@ -49,7 +49,8 @@ const MapMain = () => {
                     left: 0,
                 }}
                 // src="https://rem.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=0f86e32ed9b94652b3c5b3886f1f4956"
-                src="https://rem.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b889444768234de2a9b6995552dd2723"
+                // src="https://rem.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=b889444768234de2a9b6995552dd2723"
+                src="https://rem.maps.arcgis.com/apps/instant/3dviewer/index.html?appid=d8f4a0f45025408bbdcf520c4aa868e2"
                 className="w-100 h-100"
             />
         </div>

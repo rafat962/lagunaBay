@@ -30,8 +30,10 @@ const LeftNav = () => {
     const [open, setOpen] = React.useState(false);
     const [searchParams, SetSearchParams] = useSearchParams();
     const [permissions, setPermissions] = useState([]);
+    const [Project, setProject] = useState([]);
     useEffect(() => {
         setPermissions(searchParams.get("gIjxYweHWxrC1"));
+        setProject(searchParams.get("project"));
     }, []);
     const handleClickOpen = () => {
         setOpen(true);
@@ -85,11 +87,13 @@ const LeftNav = () => {
                     dispatch={dispatch}
                 />
                 {/* 3D */}
-                <NavItem
-                    name="DMap"
-                    icon={<HiSquare3Stack3D />}
-                    onClick={() => dispatch({ type: "DMap" })}
-                />
+                {Project == "EcoStead@Norwich" && (
+                    <NavItem
+                        name="3DMap"
+                        icon={<HiSquare3Stack3D />}
+                        onClick={() => dispatch({ type: "DMap" })}
+                    />
+                )}
                 {/* BookMark */}
                 {/* <NavItem
                     name="BookMark"
