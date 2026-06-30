@@ -28,6 +28,7 @@ function reducer(state, action) {
             return {
                 ResetStet,
                 addLayer: !state.addLayer,
+                DMap: state.DMap,
                 view: state.view,
                 viewRef: state.viewRef,
                 selectedLayer: state.selectedLayer,
@@ -44,6 +45,7 @@ function reducer(state, action) {
             return {
                 ResetStet,
                 layers: !state.layers,
+                DMap: state.DMap,
                 view: state.view,
                 viewRef: state.viewRef,
                 selectedLayer: state.selectedLayer,
@@ -52,6 +54,7 @@ function reducer(state, action) {
             return {
                 ResetStet,
                 BaseMap: !state.BaseMap,
+                DMap: state.DMap,
                 view: state.view,
                 viewRef: state.viewRef,
                 selectedLayer: state.selectedLayer,
@@ -60,6 +63,7 @@ function reducer(state, action) {
             return {
                 ResetStet,
                 legend: !state.legend,
+                DMap: state.DMap,
                 view: state.view,
                 viewRef: state.viewRef,
                 selectedLayer: state.selectedLayer,
@@ -68,6 +72,7 @@ function reducer(state, action) {
             return {
                 ResetStet,
                 bookMark: !state.bookMark,
+                DMap: state.DMap,
                 view: state.view,
                 viewRef: state.viewRef,
                 selectedLayer: state.selectedLayer,
@@ -75,6 +80,7 @@ function reducer(state, action) {
         case "reset":
             return {
                 ResetStet,
+                DMap: state.DMap,
                 view: state.view,
                 viewRef: state.viewRef,
                 selectedLayer: state.selectedLayer,

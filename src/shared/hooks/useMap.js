@@ -12,6 +12,9 @@ import {
     treatment_plant,
     cluster,
     sewer,
+    proposed_Water,
+    Proposed_streetLight,
+    Proposed_pools,
 } from "../static/StaticMapData";
 import useView from "./useView";
 
@@ -34,7 +37,10 @@ export const useMap = (basemap = "osm") => {
             NWC,
             treatment_plant,
             cluster,
-            sewer
+            sewer,
+            proposed_Water,
+            Proposed_streetLight,
+            Proposed_pools,
         );
         setView(view);
         setmap(map);

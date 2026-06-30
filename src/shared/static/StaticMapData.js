@@ -36,12 +36,20 @@ const dry_gully = new FeatureLayer({
     outFields: ["*"], // Ensure all fields are available
 });
 // -------------------------------------------------------------------------------------done
+const proposed_Water = new FeatureLayer({
+    portalItem: {
+        id: "53f3fbf82cf84391bdc682f3b9ccf7ce", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
+// -------------------------------------------------------------------------------------done
 const NWC = new FeatureLayer({
     portalItem: {
         id: "7886fd752f10498898a03f6377a131de", // Your portal item ID
     },
     outFields: ["*"], // Ensure all fields are available
 });
+
 // -------------------------------------------------------------------------------------done
 
 const detention_pond = new FeatureLayer({
@@ -93,7 +101,20 @@ const sewer = new FeatureLayer({
     },
     outFields: ["*"], // Ensure all fields are available
 });
-
+// -------------------------------------------------------------------------------------done
+const Proposed_streetLight = new FeatureLayer({
+    portalItem: {
+        id: "eb6755773d384b5e9ca361e081d95917", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
+// -------------------------------------------------------------------------------------done
+const Proposed_pools = new FeatureLayer({
+    portalItem: {
+        id: "392d4aec12e040a9a735625985149657", // Your portal item ID
+    },
+    outFields: ["*"], // Ensure all fields are available
+});
 const center = [-76.475188, 18.191876];
 const zoom = 18;
 
@@ -110,4 +131,7 @@ export {
     treatment_plant,
     cluster,
     sewer,
+    proposed_Water,
+    Proposed_streetLight,
+    Proposed_pools,
 };
