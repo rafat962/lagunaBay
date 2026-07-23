@@ -18,7 +18,6 @@ const Header = () => {
         }
         if (extent) {
             const extentArray = JSON.parse(extent);
-            console.log(extentArray);
             if (view) {
                 console.log("view", view);
                 view.when(() => {
@@ -30,15 +29,14 @@ const Header = () => {
                         {
                             duration: 2000,
                             easing: "ease-in-out",
-                        }
+                        },
                     );
                 });
-                console.log(3);
             }
         }
     }, [searchParams, view]);
     return (
-        <div className="w-full h-fit p-0 bg-slate-800 border-l-1 border-gray-600">
+        <div className="w-full h-fit p-0 bg-slate-900 border-l-1 border-gray-600">
             {/* container */}
             <div className="flex items-center justify-between px-6">
                 <div className="w-12 h-12 object-cover">
