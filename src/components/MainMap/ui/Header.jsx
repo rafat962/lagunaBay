@@ -36,7 +36,7 @@ const Header = () => {
         }
     }, [searchParams, view]);
     return (
-        <div className="w-full h-fit p-0 bg-slate-700 border-l-1 border-gray-600">
+        <div className="w-full h-fit p-0 bg-slate-800 border-l-1 border-gray-600">
             {/* container */}
             <div className="flex items-center justify-between px-6">
                 <div className="w-12 h-12 object-cover">
