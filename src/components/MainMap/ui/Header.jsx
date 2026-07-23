@@ -45,6 +45,7 @@ const Header = () => {
                 <h1 className="text-white text-xl cursor-pointer hover:translate-x-0.5 hover:text-blue-300 trans">
                     {project}
                 </h1>
+
                 <div className=""></div>
             </div>
         </div>
